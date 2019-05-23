@@ -1,6 +1,6 @@
 {
-  "name": "keipanel",
-  "short_name": "keipanel",
+  "name": "KeiPanel",
+  "short_name": "KeiPanel",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
@@ -13,8 +13,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "theme_color": "#0fafed"
 }
