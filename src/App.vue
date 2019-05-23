@@ -16,6 +16,13 @@
         //
       }
     },
+    beforeMount: function () {
+      if (this.$store.state.token) {
+        // reroute if logged in
+        if (this.$route.name === 'default')
+          this.$router.push({name: 'home'})
+      }
+    },
     mounted: function () {
       if (this.$store.state.token) {
         //
