@@ -6,7 +6,7 @@ export default axios.create({
   headers: {
     'Authorization': {
       toString () {
-        return `Bearer ${store.state.token}`
+        return `${store.state.token}`
       }
     },
     'Content-Type': 'application/json',

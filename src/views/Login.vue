@@ -58,7 +58,7 @@
         const data = {username: this.username, password: this.password}
         this.$store.dispatch('api/login', data).then(response => {
           this.$store.state.token = response.data.token
-          this.dispatch('login')
+          this.$store.dispatch('login')
           this.$router.push({name: 'home'})
         }).catch(error => {
             // handle error
