@@ -16,6 +16,10 @@ export default new Vuex.Store({
   mutations: {
     loggedIn(state, val) {
       state.logged = val
+
+      if (!val) {
+        state.token = ''
+      }
     },
     initializeStore (state) {
       if (localStorage.getItem('store')) {

@@ -14,7 +14,7 @@ export default ({
     },
     getServers: ({commit}) => {
       return new Promise((resolve, reject) => {
-        Vue.axios.post(`/panel/list`).then(response => {
+        Vue.axios.get(`/panel/list`).then(response => {
           resolve(response)
         }).catch(error => {
           reject(error)
