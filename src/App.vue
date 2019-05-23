@@ -9,12 +9,18 @@
 </template>
 
 <script>
-
   export default {
     name: 'App',
     data () {
       return {
         //
+      }
+    },
+    mounted: function () {
+      if (this.$store.state.token) {
+        //
+      } else {
+        this.$router.push({name: 'default'})
       }
     }
   }

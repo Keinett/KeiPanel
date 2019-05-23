@@ -1,13 +1,24 @@
 <template>
-  <HelloWorld />
+    <v-container grid-list-md>
+        <v-layout align-center row wrap>
+            <v-flex xs12>
+                <ProgressCard></ProgressCard>
+            </v-flex>
+            <v-flex xs12>
+                <ServerList></ServerList>
+            </v-flex>
+        </v-layout>
+    </v-container>
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
+  import ServerList from '../components/ServerList'
+  import ProgressCard from '../components/ProgressCard'
 
   export default {
     components: {
-      HelloWorld
+      ProgressCard,
+      ServerList
     }
   }
 </script>
