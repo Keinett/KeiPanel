@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Login from './views/Login'
 import Home from './views/Home'
+import Server from './views/Server'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -28,6 +29,15 @@ export default new Router({
       components: {
         header: Header,
         default: Home,
+        footer: Footer
+      }
+    },
+    {
+      path: '/server/:id',
+      name: 'server',
+      components: {
+        header: Header,
+        default: Server,
         footer: Footer
       }
     },

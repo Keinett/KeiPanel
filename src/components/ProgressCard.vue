@@ -28,7 +28,12 @@
     name: 'ProgressCard',
     data: () => ({
       items: [] // title and value props
-    })
+    }),
+    methods: {
+      setData (response) {
+        this.items = response.data
+      }
+    }
   }
 </script>
 

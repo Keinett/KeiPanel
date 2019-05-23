@@ -2,10 +2,10 @@
     <v-container grid-list-md>
         <v-layout align-center row wrap>
             <v-flex xs12>
-                <ProgressCard></ProgressCard>
+                <ProgressCard ref="progressCard"></ProgressCard>
             </v-flex>
             <v-flex xs12>
-                <ServerList></ServerList>
+                <ServerList ref="serverList"></ServerList>
             </v-flex>
         </v-layout>
     </v-container>
@@ -19,6 +19,16 @@
     components: {
       ProgressCard,
       ServerList
+    },
+    mounted: function () {
+      // get server list
+      this.$store.dispatch('api/getServers').then(response => {
+        console.log(response)
+        this.$refs.serverList.setData(response)
+        this.$refs.progressCard.setData(response)
+      }).catch(error => {
+        console.log(error)
+      })
     }
   }
 </script>

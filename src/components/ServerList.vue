@@ -31,14 +31,10 @@
       ],
       servers: []
     }),
-    mounted: function () {
-      // get server list
-      this.$store.dispatch('api/getServers').then(response => {
-        console.log(response)
+    methods: {
+      setData (response) {
         this.servers = response.data
-      }).catch(error => {
-        console.log(error)
-      })
+      }
     }
   }
 </script>
