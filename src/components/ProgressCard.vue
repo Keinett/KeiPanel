@@ -10,6 +10,7 @@
                                 :width="15"
                                 :value="item.value"
                                 color="primary"
+                                :indeterminate="(item.title === 'Loading...')"
                         >
                             {{ item.value }}%
                         </v-progress-circular>
@@ -27,7 +28,7 @@
   export default {
     name: 'ProgressCard',
     data: () => ({
-      items: [] // title and value props
+      items: [{ title: "Loading...", value: 100 }] // title and value props
     }),
     methods: {
       setData (data) {
