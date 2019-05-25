@@ -2,6 +2,7 @@
     <v-app dark>
         <router-view name="header"></router-view>
         <v-content>
+            <SnackbarDialog ref="snackbarDialog"></SnackbarDialog>
             <router-view/>
         </v-content>
         <router-view name="footer"></router-view>
@@ -9,7 +10,12 @@
 </template>
 
 <script>
+  import SnackbarDialog from './components/SnackbarDialog'
+
   export default {
+    components: {
+      SnackbarDialog,
+    },
     name: 'App',
     data () {
       return {
@@ -24,6 +30,8 @@
       }
     },
     mounted: function () {
+      this.$root.$snackbarDialog = this.$refs.snackbarDialog
+
       if (this.$store.state.token) {
         //
       } else {

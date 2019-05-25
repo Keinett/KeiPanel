@@ -20,7 +20,7 @@ Vue.mixin({
     // decoded jwt
     decodedToken() {
       if (!this.$store.state.token) return null
-      return jwt.decode(String(this.$store.state.token))
+      return jwt.decode(String(this.$store.state.token.split(' ')[1]))
     }
   }
 })

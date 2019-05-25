@@ -30,8 +30,8 @@
       items: [] // title and value props
     }),
     methods: {
-      setData (response) {
-        this.items = response.data
+      setData (data) {
+        this.items = data
       }
     }
   }

@@ -21,5 +21,23 @@ export default ({
         })
       })
     },
+    restartServer: ({commit}, data) => {
+      return new Promise((resolve, reject) => {
+        Vue.axios.post(`/panel/restart`, data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
+    fixPerms: ({commit}, data) => {
+      return new Promise((resolve, reject) => {
+        Vue.axios.post(`/panel/fixpermissions`, data).then(response => {
+          resolve(response)
+        }).catch(error => {
+          reject(error)
+        })
+      })
+    },
   }
 })
