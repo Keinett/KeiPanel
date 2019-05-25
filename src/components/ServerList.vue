@@ -3,7 +3,7 @@
         <v-card-title>
             <h2>Servers</h2>
         </v-card-title>
-        <v-data-table :headers="headers" :items="servers" class="elevation-1">
+        <v-data-table :headers="headers" :items="servers" class="elevation-1" hide-actions>
             <template v-slot:items="props">
                 <tr @click="rowClicked(props.item)" :style="{ cursor: 'pointer'}">
                     <td class="text-xs-left">{{ props.item.name }}</td>
