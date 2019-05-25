@@ -7,11 +7,15 @@ import axios from './plugins/axios'
 import './registerServiceWorker'
 
 import jwt from 'jsonwebtoken'
+import io from 'socket.io-client';
 
 Vue.config.productionTip = false
 
 
 Vue.mixin({
+  data: () => ({
+    socket: io('panel.potatosalad.keinett.us'),
+  }),
   computed: {
     // decoded jwt
     decodedToken() {

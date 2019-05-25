@@ -25,10 +25,13 @@
       this.$store.dispatch('api/getServers').then(response => {
         console.log(response)
         this.$refs.serverList.setData(response)
-        this.$refs.progressCard.setData(response)
+        //this.$refs.progressCard.setData(response)
       }).catch(error => {
         console.log(error)
       })
+
+      /* run socket */
+      //
     }
   }
 </script>
