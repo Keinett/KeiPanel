@@ -13,26 +13,31 @@
                 <hr>
                 <v-card-text>
                     <v-layout row wrap>
-                      <v-flex xs12>
-                        <v-textarea
-                          name="logbox"
-                          label="Server log"
-                          :value="logs"
-                          readonly
-                        ></v-textarea>
+                      <v-flex xs12 v-for="log in logs">
+                        <div>
+                          {{ log }}
+                        </div>
                       </v-flex>
-                      <v-form ref="cmdForm" @submit.prevent="sendCmd">
                         <v-flex xs12>
-                          <v-text-field
-                            name="cmdbox"
-                            v-model="consoleCmd"
-                            label="Console Command"
-                          ></v-text-field>
+                          <v-form ref="cmdForm" @submit.prevent="sendCmd">
+                            <v-text-field
+                              name="cmdbox"
+                              v-model="consoleCmd"
+                              label="Console Command"
+                            ></v-text-field>
+                          </v-form>
                         </v-flex>
-                      </v-form>
                     </v-layout>
                 </v-card-text>
             </v-card>
+            <div v-else class="text-xs-center">
+              <v-progress-circular
+                :size="100"
+                :width="7"
+                color="primary"
+                indeterminate
+              ></v-progress-circular>
+            </div>
         </v-flex>
     </v-layout>
   </v-container>
@@ -43,7 +48,7 @@
     name: 'Server',
     data: () => ({
       server: null,
-      logs: '',
+      logs: [],
       consoleCmd: '',
     }),
     computed: {
@@ -88,8 +93,8 @@
       this.socket.on('server_log', (response) => {
         console.log(response)
         if (response == "clear_server_logs")
-          this.logs = ''
-        this.logs += `${response}\n`
+          this.logs = []
+        this.logs.push(response)
       })
       this.socket.emit('subscribe_serverlog', {
         token: this.$store.state.token,
