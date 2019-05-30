@@ -13,20 +13,22 @@
                 <hr>
                 <v-card-text>
                     <v-layout row wrap>
-                      <v-flex xs12 v-for="log in logs">
-                        <div>
-                          {{ log }}
-                        </div>
-                      </v-flex>
-                        <v-flex xs12>
-                          <v-form ref="cmdForm" @submit.prevent="sendCmd">
-                            <v-text-field
-                              name="cmdbox"
-                              v-model="consoleCmd"
-                              label="Console Command"
-                            ></v-text-field>
-                          </v-form>
+                      <div id="serverlog" v-chat-scroll>
+                        <v-flex xs12 v-for="log in logs">
+                          <div>
+                            {{ log }}
+                          </div>
                         </v-flex>
+                      </div>
+                      <v-flex xs12>
+                        <v-form ref="cmdForm" @submit.prevent="sendCmd">
+                          <v-text-field
+                            name="cmdbox"
+                            v-model="consoleCmd"
+                            label="Console Command"
+                          ></v-text-field>
+                        </v-form>
+                      </v-flex>
                     </v-layout>
                 </v-card-text>
             </v-card>
@@ -108,5 +110,11 @@
 </script>
 
 <style scoped>
-
+#serverlog{
+  height: 600px;
+  width: 100%;
+  overflow: auto;
+  top: 0;
+  bottom: 3em;
+}
 </style>

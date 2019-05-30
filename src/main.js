@@ -11,6 +11,8 @@ import io from 'socket.io-client';
 
 Vue.config.productionTip = false
 
+Vue.use(require('vue-chat-scroll'))
+
 
 Vue.mixin({
   data: () => ({
