@@ -37,10 +37,12 @@
         const progressCardData = [
           {
             title: 'Memory Usage',
+            type: 'progress',
             value: (response.os.mempercent * 100).toFixed(2)
           },
           {
             title: 'CPU Usage',
+            type: 'progress',
             value: (response.os.cpu * 100).toFixed(2)
           },
         ]
@@ -51,6 +53,7 @@
         const infoCardData = [
           {
             title: 'Total Players',
+            type: 'info',
             value: response.players.online
           },
         ]
