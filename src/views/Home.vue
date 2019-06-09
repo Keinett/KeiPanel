@@ -2,7 +2,6 @@
     <v-container grid-list-md>
         <v-layout align-center row wrap>
             <v-flex xs12>
-                <ProgressCard ref="progressCard"></ProgressCard>
                 <InfoCard ref="infoCard"></InfoCard>
             </v-flex>
             <v-flex xs12>
@@ -14,12 +13,10 @@
 
 <script>
   import ServerList from '../components/ServerList'
-  import ProgressCard from '../components/ProgressCard'
   import InfoCard from '../components/InfoCard'
 
   export default {
     components: {
-      ProgressCard,
       InfoCard,
       ServerList
     },
@@ -46,8 +43,8 @@
             value: (response.os.cpu * 100).toFixed(2)
           },
         ]
-        if (this.$refs.progressCard)
-          this.$refs.progressCard.setData(progressCardData)
+        if (this.$refs.infoCard)
+          this.$refs.infoCard.setProgressCards(progressCardData)
       })
       this.socket.on('PLAYERINFO', (response) => {
         const infoCardData = [
@@ -58,7 +55,7 @@
           },
         ]
         if (this.$refs.infoCard)
-          this.$refs.infoCard.setData(infoCardData)
+          this.$refs.infoCard.setInfoCards(infoCardData)
       })
 
     }

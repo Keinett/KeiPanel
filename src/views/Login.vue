@@ -61,7 +61,7 @@
           this.$store.dispatch('login')
           this.$router.push({name: 'home'})
         }).catch(error => {
-            // handle error
+          this.$root.$snackbarDialog.open('Invalid credentials', { color: 'error' })
         })
       },
     }
