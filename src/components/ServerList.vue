@@ -33,7 +33,7 @@
     }),
     methods: {
       rowClicked (item) {
-        this.$router.push({name: 'server', params: {id: item.id}})
+        this.$router.push({name: 'server', params: {serverid: item.id, nodeid: item.nodeid}})
       },
       setData (response) {
         this.servers = response.data

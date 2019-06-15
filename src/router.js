@@ -33,7 +33,7 @@ export default new Router({
       }
     },
     {
-      path: '/server/:id',
+      path: '/server/:nodeid/:serverid',
       name: 'server',
       components: {
         header: Header,
