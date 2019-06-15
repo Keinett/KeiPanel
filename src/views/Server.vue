@@ -46,12 +46,15 @@
 </template>
 
 <script>
+  import io from 'socket.io-client';
+
   export default {
     name: 'Server',
     data: () => ({
       server: null,
       logs: [],
       consoleCmd: '',
+      socket: io('https://panel.potatosalad.keinett.us')
     }),
     computed: {
       serverId: function () {
