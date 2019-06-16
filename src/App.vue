@@ -3,6 +3,7 @@
         <router-view name="header"></router-view>
         <v-content>
             <SnackbarDialog ref="snackbarDialog"></SnackbarDialog>
+            <AddTaskDialog ref="addTaskDialog"></AddTaskDialog>
             <router-view/>
         </v-content>
         <router-view name="footer"></router-view>
@@ -11,9 +12,11 @@
 
 <script>
   import SnackbarDialog from './components/SnackbarDialog'
+  import AddTaskDialog from './components/AddTaskDialog'
 
   export default {
     components: {
+      AddTaskDialog,
       SnackbarDialog,
     },
     name: 'App',
@@ -31,6 +34,7 @@
     },
     mounted: function () {
       this.$root.$snackbarDialog = this.$refs.snackbarDialog
+      this.$root.$addTaskDialog = this.$refs.addTaskDialog
 
       if (this.$store.state.token) {
         //

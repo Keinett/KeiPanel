@@ -6,7 +6,6 @@
                 <v-card-title>
                     <h2>{{ server.name }}</h2>
                     <v-spacer></v-spacer>
-                    <v-btn color="primary" @click="fixPerms(server.id, server.name)">Fix Perms</v-btn>
                     <v-btn color="warning" @click="restartServer(server.id, server.name)">Restart</v-btn>
                     <v-btn color="error" @click="">Stop</v-btn>
                 </v-card-title>
@@ -26,6 +25,7 @@
                             name="cmdbox"
                             v-model="consoleCmd"
                             label="Console Command"
+                            outline
                           ></v-text-field>
                         </v-form>
                       </v-flex>
@@ -41,13 +41,18 @@
               ></v-progress-circular>
             </div>
         </v-flex>
+        <v-flex xs12>
+            <Scheduler></Scheduler>
+        </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+  import Scheduler from '../components/TaskList'
   export default {
     name: 'Server',
+    components: {Scheduler},
     data: () => ({
       server: null,
       logs: [],
@@ -93,7 +98,6 @@
     },
     mounted: function () {
       this.socket.on('server_log', (response) => {
-        console.log(response)
         if (response == "clear_server_logs")
           this.logs = []
         this.logs.push(response)
