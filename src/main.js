@@ -15,9 +15,6 @@ Vue.use(require('vue-chat-scroll'))
 
 
 Vue.mixin({
-  data: () => ({
-    socket: io('https://panel.potatosalad.keinett.us'),
-  }),
   computed: {
     // decoded jwt
     decodedToken() {

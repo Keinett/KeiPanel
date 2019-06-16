@@ -14,8 +14,13 @@
 <script>
   import ServerList from '../components/ServerList'
   import InfoCard from '../components/InfoCard'
+  import io from 'socket.io-client'
+
 
   export default {
+    data: () => ({
+      socket: io('https://panel.potatosalad.keinett.us')
+    }),
     components: {
       InfoCard,
       ServerList

@@ -50,6 +50,7 @@
 
 <script>
   import Scheduler from '../components/TaskList'
+  import io from 'socket.io-client';
   export default {
     name: 'Server',
     components: {Scheduler},
@@ -57,6 +58,7 @@
       server: null,
       logs: [],
       consoleCmd: '',
+      socket: io('https://panel.potatosalad.keinett.us')
     }),
     computed: {
       serverId: function () {
@@ -91,7 +93,7 @@
     beforeMount: function () {
       this.$store.dispatch('api/getServers').then(response => {
         const servers = response.data
-        this.server = servers.find(item => item.id == this.$route.params.id)
+        this.server = servers.find(item => (item.id == this.$route.params.serverid) && (item.nodeid == this.$route.params.nodeid))
       }).catch(error => {
         this.$root.$snackbarDialog.open(error.response.data.msg, { color: 'error' })
       })
@@ -104,7 +106,8 @@
       })
       this.socket.emit('subscribe_serverlog', {
         token: this.$store.state.token,
-        serverid: parseInt(this.$route.params.id)
+        serverid: parseInt(this.$route.params.serverid),
+        nodeid: parseInt(this.$route.params.nodeid)
       })
     },
     created () {
